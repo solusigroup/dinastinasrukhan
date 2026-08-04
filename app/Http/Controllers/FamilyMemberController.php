@@ -171,6 +171,13 @@ class FamilyMemberController extends Controller
             unset($data['photo']);
         }
 
+        // Prevent setting self or descendant as parent
+        if (isset($data['parent_id']) && $data['parent_id']) {
+            if ($data['parent_id'] == $familyMember->id || $familyMember->getAllDescendantIds()->contains((int) $data['parent_id'])) {
+                return back()->withErrors(['parent_id' => 'Tidak dapat memilih anggota ini atau keturunannya sebagai orang tua.']);
+            }
+        }
+
         // Auto-calculate generation
         if (isset($data['parent_id']) && $data['parent_id']) {
             $parent = FamilyMember::find($data['parent_id']);

@@ -160,7 +160,7 @@ export default function FamilyMemberIndex() {
                                                 </td>
                                                 <td className="px-4 py-3 text-muted-foreground">
                                                     {member.spouses && member.spouses.length > 0
-                                                        ? member.spouses.map(s => s.name).join(', ')
+                                                        ? member.spouses.map(s => `${s.name}${s.status === 'divorced' ? ' (Cerai)' : ''}`).join(', ')
                                                         : '-'}
                                                 </td>
                                                 <td className="px-4 py-3">

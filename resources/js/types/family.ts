@@ -7,6 +7,7 @@ export interface Spouse {
     birth_date: string | null;
     death_date: string | null;
     photo: string | null;
+    status?: 'married' | 'divorced';
     created_at?: string;
     updated_at?: string;
 }
@@ -35,4 +36,7 @@ export type FamilyMember = {
 export type FamilyTreeStats = {
     totalMembers: number;
     totalGenerations: number;
+    totalMale?: number;
+    totalFemale?: number;
+    totalSpouses?: number;
 };

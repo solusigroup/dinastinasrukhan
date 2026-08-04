@@ -122,7 +122,14 @@ export default function FamilyMemberShow() {
                                                             )}
                                                         </div>
                                                         <div className="flex flex-col">
-                                                            <span className="text-sm font-semibold text-foreground">{spouse.name}</span>
+                                                            <div className="flex items-center gap-2">
+                                                                <span className="text-sm font-semibold text-foreground">{spouse.name}</span>
+                                                                {spouse.status === 'divorced' ? (
+                                                                    <span className="rounded bg-slate-500/20 px-2 py-0.5 text-[10px] font-medium text-slate-400">Cerai</span>
+                                                                ) : (
+                                                                    <span className="rounded bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">Masih Menikah</span>
+                                                                )}
+                                                            </div>
                                                             <span className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
                                                                 <Heart className="h-3 w-3 text-pink-400" /> {spouse.gender === 'male' ? 'Suami' : 'Istri'}
                                                             </span>

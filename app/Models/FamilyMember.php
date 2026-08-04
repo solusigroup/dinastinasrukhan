@@ -80,6 +80,33 @@ class FamilyMember extends Model
         return $query->whereNull('parent_id');
     }
 
+    /**
+     * Scope to filter male members.
+     */
+    public function scopeMale($query)
+    {
+        return $query->where('gender', 'male');
+    }
+
+    /**
+     * Scope to filter female members.
+     */
+    public function scopeFemale($query)
+    {
+        return $query->where('gender', 'female');
+    }
+
+    /**
+     * Scope to search member by name or birth place.
+     */
+    public function scopeSearch($query, string $search)
+    {
+        return $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('birth_place', 'like', "%{$search}%");
+        });
+    }
+
     public static function getTree(): \Illuminate\Database\Eloquent\Collection
     {
         return static::roots()->with(['spouses', 'childrenRecursive'])->orderBy('birth_date')->get();

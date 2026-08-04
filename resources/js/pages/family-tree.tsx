@@ -100,7 +100,7 @@ export default function FamilyTree() {
             });
 
             const link = document.createElement('a');
-            link.download = `Silsilah-Bani-Ali-Dahlan-${new Date().toISOString().split('T')[0]}.png`;
+            link.download = `Silsilah-Dinasti-Nasrukhan-${new Date().toISOString().split('T')[0]}.png`;
             link.href = dataUrl;
             link.click();
         } catch (error: any) {
@@ -133,7 +133,7 @@ export default function FamilyTree() {
                         >
                             <ArrowLeft className="h-4 w-4" />
                         </Link>
-                        <h2 className="text-lg font-bold">Pohon Keluarga Bani Ali Dahlan</h2>
+                        <h2 className="text-lg font-bold">Pohon Keluarga Dinasti Nasrukhan</h2>
                     </div>
                     <div className="flex items-center gap-1">
                         <button
@@ -282,7 +282,7 @@ export default function FamilyTree() {
                                 className="flex flex-col items-center gap-12 p-12 lg:p-24 rounded-[3rem] bg-background text-foreground"
                             >
                                 <div className="text-center mb-4">
-                                    <h1 className="text-3xl font-extrabold text-foreground mb-2">Pohon Keluarga Bani Ali Dahlan</h1>
+                                    <h1 className="text-3xl font-extrabold text-foreground mb-2">Pohon Keluarga Dinasti Nasrukhan</h1>
                                     <p className="text-muted-foreground">
                                         Diekspor pada {new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                                     </p>

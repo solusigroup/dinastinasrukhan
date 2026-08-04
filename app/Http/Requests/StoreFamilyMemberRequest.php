@@ -35,6 +35,7 @@ class StoreFamilyMemberRequest extends FormRequest
             'spouses.*.gender' => ['required', 'in:male,female'],
             'spouses.*.birth_date' => ['nullable', 'date'],
             'spouses.*.death_date' => ['nullable', 'date', 'after_or_equal:spouses.*.birth_date'],
+            'spouses.*.status' => ['nullable', 'in:married,divorced'],
             'spouses.*.photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
         ];
     }

@@ -41,6 +41,7 @@ export default function FamilyMemberForm() {
             gender: s.gender,
             birth_date: s.birth_date?.split('T')[0] ?? '',
             death_date: s.death_date?.split('T')[0] ?? '',
+            status: s.status ?? 'married',
             photo: s.photo ?? null as any,
         })) ?? [],
         photo: null as File | null,
@@ -62,7 +63,7 @@ export default function FamilyMemberForm() {
     const addSpouse = () => {
         setData('spouses', [
             ...data.spouses,
-            { name: '', gender: data.gender === 'male' ? 'female' : 'male', birth_date: '', death_date: '', photo: null } as any
+            { name: '', gender: data.gender === 'male' ? 'female' : 'male', birth_date: '', death_date: '', status: 'married', photo: null } as any
         ]);
     };
 
@@ -208,7 +209,7 @@ export default function FamilyMemberForm() {
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div>
                                     <label htmlFor="parent_id" className="mb-1.5 block text-sm font-medium">
-                                        Pilih Orang Tua Darah/Bani
+                                        Pilih Orang Tua Nasab/Silsilah
                                     </label>
                                     <select
                                         id="parent_id"
@@ -309,6 +310,20 @@ export default function FamilyMemberForm() {
                                                     <option value="male">Laki-laki</option>
                                                 </select>
                                                 {(errors as any)[`spouses.${index}.gender`] && <p className="mt-1 text-xs text-red-400">{(errors as any)[`spouses.${index}.gender`]}</p>}
+                                            </div>
+
+                                            {/* Marital Status */}
+                                            <div>
+                                                <label className="mb-1.5 block text-sm font-medium">Status Pernikahan Saat Ini</label>
+                                                <select
+                                                    value={spouse.status ?? 'married'}
+                                                    onChange={(e) => updateSpouse(index, 'status', e.target.value)}
+                                                    className="w-full rounded-lg border border-sidebar-border/70 bg-background px-3 py-2.5 text-sm"
+                                                >
+                                                    <option value="married">Masih Menikah</option>
+                                                    <option value="divorced">Cerai</option>
+                                                </select>
+                                                {(errors as any)[`spouses.${index}.status`] && <p className="mt-1 text-xs text-red-400">{(errors as any)[`spouses.${index}.status`]}</p>}
                                             </div>
 
                                             {/* Birth Date */}

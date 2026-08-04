@@ -312,7 +312,7 @@ export default function Dashboard() {
                                     Superadmin Dashboard
                                 </h2>
                                 <p className="text-muted-foreground">
-                                    Silsilah Keluarga Besar Bani Ali Dahlan — Pusat Kontrol
+                                    Silsilah Keluarga Besar Dinasti Nasrukhan — Pusat Kontrol
                                 </p>
                             </div>
                         </div>
@@ -489,8 +489,8 @@ export default function Dashboard() {
                     </h2>
                     <p className="text-muted-foreground">
                         {isViewer
-                            ? 'Anda memiliki akses Viewer — jelajahi silsilah Keluarga Besar Bani Ali Dahlan.'
-                            : 'Kelola silsilah Keluarga Besar Bani Ali Dahlan dari sini.'}
+                            ? 'Anda memiliki akses Viewer — jelajahi silsilah Keluarga Besar Dinasti Nasrukhan.'
+                            : 'Kelola silsilah Keluarga Besar Dinasti Nasrukhan dari sini.'}
                     </p>
                     {isViewer && (
                         <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400 ring-1 ring-inset ring-cyan-500/20">

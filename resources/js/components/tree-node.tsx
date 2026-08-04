@@ -92,7 +92,11 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                                     )}
                                 </div>
                                 <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                    <Heart className="h-2.5 w-2.5 text-pink-400" /> {spouse.name}
+                                    <Heart className={`h-2.5 w-2.5 ${spouse.status === 'divorced' ? 'text-slate-400 opacity-60' : 'text-pink-400'}`} />
+                                    <span>{spouse.name}</span>
+                                    {spouse.status === 'divorced' && (
+                                        <span className="rounded bg-slate-500/20 px-1 py-0.2 text-[9px] font-medium text-slate-400">Cerai</span>
+                                    )}
                                 </span>
                             </div>
                         ))}

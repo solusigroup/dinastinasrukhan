@@ -513,7 +513,7 @@ update.patch = (args: { family_member: string | number } | [family_member: strin
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:225
+ * @see app/Http/Controllers/FamilyMemberController.php:232
  * @route '/family-members/{family_member}'
  */
 export const destroy = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -528,7 +528,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:225
+ * @see app/Http/Controllers/FamilyMemberController.php:232
  * @route '/family-members/{family_member}'
  */
 destroy.url = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -556,7 +556,7 @@ destroy.url = (args: { family_member: string | number } | [family_member: string
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:225
+ * @see app/Http/Controllers/FamilyMemberController.php:232
  * @route '/family-members/{family_member}'
  */
 destroy.delete = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -566,7 +566,7 @@ destroy.delete = (args: { family_member: string | number } | [family_member: str
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:225
+ * @see app/Http/Controllers/FamilyMemberController.php:232
  * @route '/family-members/{family_member}'
  */
     const destroyForm = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -581,7 +581,7 @@ destroy.delete = (args: { family_member: string | number } | [family_member: str
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:225
+ * @see app/Http/Controllers/FamilyMemberController.php:232
  * @route '/family-members/{family_member}'
  */
         destroyForm.delete = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

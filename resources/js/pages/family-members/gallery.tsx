@@ -123,8 +123,11 @@ export default function Gallery() {
                                                                 {spouse.name.charAt(0)}
                                                             </div>
                                                         </div>
-                                                        <span className="text-xs text-foreground line-clamp-1">
-                                                            {spouse.name}
+                                                        <span className="text-xs text-foreground line-clamp-1 flex items-center gap-1">
+                                                            <span>{spouse.name}</span>
+                                                            {spouse.status === 'divorced' && (
+                                                                <span className="rounded bg-slate-500/20 px-1.5 py-0.5 text-[10px] font-medium text-slate-400">Cerai</span>
+                                                            )}
                                                         </span>
                                                     </div>
                                                 ))}

@@ -214,37 +214,39 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                     {/* Vertical connector down from parent */}
                     <div className="h-8 w-[3px] rounded-full bg-gradient-to-b from-slate-400 to-slate-300" />
 
-                    {/* If multiple spouse groups, create a horizontal split for the groups */}
-                    {childrenGroups.length > 1 && (
-                        <div className="relative flex items-center justify-center mb-2">
+                    {/* Groups container — horizontal bar is placed inside so it inherits proper width */}
+                    <div className="relative flex gap-12 justify-center">
+                        {/* Horizontal bar spanning across all spouse groups */}
+                        {childrenGroups.length > 1 && (
                             <div
-                                className="absolute top-0 h-[2.5px] rounded-full bg-slate-400/70"
-                                style={{
-                                    width: `calc(100% - ${(100 / childrenGroups.length)}%)`,
-                                }}
+                                className="absolute top-0 left-0 right-0 h-[3px] rounded-full bg-slate-400/80 z-0"
                             />
-                        </div>
-                    )}
+                        )}
 
-                    <div className="flex gap-12 justify-center">
                         {childrenGroups.map((group, groupIdx) => (
-                            <div key={groupIdx} className="flex flex-col items-center">
-                                {/* Group Label (Spouse Name) if there are multiple groups or we want to be explicit */}
+                            <div key={groupIdx} className="flex flex-col items-center relative z-10">
+                                {/* Vertical drop from horizontal bar to group label */}
                                 {childrenGroups.length > 1 && (
-                                    <div className="mb-2 rounded-full border border-pink-500/20 bg-pink-500/5 px-3 py-1 text-[10px] font-medium text-pink-500">
+                                    <div className="h-6 w-[3px] rounded-full bg-slate-400/70 mb-1" />
+                                )}
+
+                                {/* Group Label (Spouse Name) if there are multiple groups */}
+                                {childrenGroups.length > 1 && (
+                                    <div className="mb-2 rounded-full border-2 border-pink-400/40 bg-pink-500/10 px-3 py-1 text-[10px] font-semibold text-pink-500 shadow-sm">
                                         Anak dari: {group.label}
                                     </div>
                                 )}
                                 
+                                {/* Vertical connector from label to children */}
                                 {childrenGroups.length > 1 && (
-                                    <div className="h-4 w-[2.5px] rounded-full bg-slate-400/60 mb-2" />
+                                    <div className="h-5 w-[3px] rounded-full bg-slate-400/60 mb-1" />
                                 )}
 
                                 {/* Horizontal bar for the children of THIS group */}
                                 {group.children.length > 1 && (
-                                    <div className="relative flex items-center w-full">
+                                    <div className="relative w-full" style={{ height: '3px' }}>
                                         <div
-                                            className="h-[2.5px] rounded-full bg-slate-400/70 absolute top-0"
+                                            className="h-[3px] rounded-full bg-slate-400/70 absolute top-0"
                                             style={{
                                                 left: `${50 / group.children.length}%`,
                                                 right: `${50 / group.children.length}%`
@@ -258,7 +260,7 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                                     {group.children.map((child) => (
                                         <div key={child.id} className="flex flex-col items-center relative">
                                             {group.children.length > 1 && (
-                                                <div className="h-4 w-[2.5px] rounded-full bg-slate-400/60 absolute -top-2" />
+                                                <div className="h-5 w-[3px] rounded-full bg-slate-400/60 absolute -top-2" />
                                             )}
                                             <TreeNode member={child} depth={depth + 1} onNodeClick={onNodeClick} />
                                         </div>

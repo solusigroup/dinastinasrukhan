@@ -9,7 +9,7 @@ type TreeNodeProps = {
 
 export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
     const hasChildren = member.children_recursive && member.children_recursive.length > 0;
-    const isDeceased = !!member.death_date;
+    const isDeceased = member.is_deceased || !!member.death_date;
 
     const depthColors = [
         'border-2 border-amber-400 bg-gradient-to-br from-amber-500/20 to-orange-500/20 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20',
@@ -136,6 +136,12 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
             <span className="absolute -top-2 -left-2 flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-white shadow-sm">
                 {depth + 1}
             </span>
+                {isDeceased && (
+                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-0.5 rounded-full bg-black/80 px-2 py-0.5 text-[8px] font-bold text-white shadow-md border border-black/50 whitespace-nowrap" title="Almarhum/Almarhumah">
+                        <span className="inline-block w-2.5 h-3 mr-0.5" style={{ background: 'linear-gradient(135deg, #1a1a1a 25%, #333 50%, #1a1a1a 75%)', clipPath: 'polygon(0 0, 40% 0, 50% 15%, 60% 0, 100% 0, 100% 100%, 60% 80%, 50% 100%, 40% 80%, 0 100%)' }} />
+                        Wafat
+                    </span>
+                )}
         </button>
     );
 

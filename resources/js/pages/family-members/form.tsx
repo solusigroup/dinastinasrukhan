@@ -31,6 +31,7 @@ export default function FamilyMemberForm() {
         gender: member?.gender ?? 'male',
         birth_date: member?.birth_date?.split('T')[0] ?? '',
         death_date: member?.death_date?.split('T')[0] ?? '',
+        is_deceased: member?.is_deceased ?? false,
         birth_place: member?.birth_place ?? '',
         bio: member?.bio ?? '',
         parent_id: member?.parent_id?.toString() ?? '',
@@ -188,20 +189,52 @@ export default function FamilyMemberForm() {
                             </div>
                         </div>
 
-                        {/* Death Date */}
+                        {/* Deceased Status */}
                         <div>
-                            <label htmlFor="death_date" className="mb-1.5 block text-sm font-medium">
-                                Tanggal Wafat (Kosongkan jika masih hidup)
+                            <label className="mb-1.5 block text-sm font-medium">
+                                Sudah Wafat?
                             </label>
-                            <input
-                                id="death_date"
-                                type="date"
-                                value={data.death_date}
-                                onChange={(e) => setData('death_date', e.target.value)}
-                                className="w-full rounded-lg border border-sidebar-border/70 bg-background px-4 py-2.5 text-sm transition-colors focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
-                            />
-                            {errors.death_date && <p className="mt-1 text-xs text-red-400">{errors.death_date}</p>}
+                            <div className="flex gap-4">
+                                <label className={`flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${!data.is_deceased ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-500' : 'border-sidebar-border/70'}`}>
+                                    <input
+                                        type="radio"
+                                        name="is_deceased"
+                                        checked={!data.is_deceased}
+                                        onChange={() => { setData(prev => ({ ...prev, is_deceased: false, death_date: '' })); }}
+                                        className="hidden"
+                                    />
+                                    Tidak (Masih Hidup)
+                                </label>
+                                <label className={`flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-colors ${data.is_deceased ? 'border-slate-500/50 bg-slate-500/10 text-slate-400' : 'border-sidebar-border/70'}`}>
+                                    <input
+                                        type="radio"
+                                        name="is_deceased"
+                                        checked={data.is_deceased}
+                                        onChange={() => setData(prev => ({ ...prev, is_deceased: true }))}
+                                        className="hidden"
+                                    />
+                                    Ya (Sudah Wafat)
+                                </label>
+                            </div>
+                            {errors.is_deceased && <p className="mt-1 text-xs text-red-400">{errors.is_deceased}</p>}
                         </div>
+
+                        {/* Death Date - only shown when is_deceased is true */}
+                        {data.is_deceased && (
+                            <div>
+                                <label htmlFor="death_date" className="mb-1.5 block text-sm font-medium">
+                                    Tanggal Wafat <span className="text-xs text-muted-foreground">(Opsional, kosongkan jika tidak diketahui)</span>
+                                </label>
+                                <input
+                                    id="death_date"
+                                    type="date"
+                                    value={data.death_date}
+                                    onChange={(e) => setData('death_date', e.target.value)}
+                                    className="w-full rounded-lg border border-sidebar-border/70 bg-background px-4 py-2.5 text-sm transition-colors focus:border-amber-500/50 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                                />
+                                {errors.death_date && <p className="mt-1 text-xs text-red-400">{errors.death_date}</p>}
+                            </div>
+                        )}
 
                         {/* Parent */}
                         <div className="pt-2">

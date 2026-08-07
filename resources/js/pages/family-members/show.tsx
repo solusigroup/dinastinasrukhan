@@ -102,10 +102,10 @@ export default function FamilyMemberShow() {
                                             Lahir: {formatDate(member.birth_date)}
                                         </div>
                                     )}
-                                    {member.death_date && (
+                                    {(member.is_deceased || member.death_date) && (
                                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                             <Calendar className="h-4 w-4 text-red-400" />
-                                            Wafat: {formatDate(member.death_date)}
+                                            Wafat{member.death_date ? `: ${formatDate(member.death_date)}` : ' (tanggal tidak diketahui)'}
                                         </div>
                                     )}
                                     {member.spouses && member.spouses.length > 0 && (

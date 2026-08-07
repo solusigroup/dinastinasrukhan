@@ -16,6 +16,7 @@ class FamilyMember extends Model
         'gender',
         'birth_date',
         'death_date',
+        'is_deceased',
         'birth_place',
         'bio',
         'photo',
@@ -29,6 +30,7 @@ class FamilyMember extends Model
         return [
             'birth_date' => 'date',
             'death_date' => 'date',
+            'is_deceased' => 'boolean',
         ];
     }
 

@@ -12,11 +12,11 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
     const isDeceased = !!member.death_date;
 
     const depthColors = [
-        'border-amber-400/60 bg-gradient-to-br from-amber-500/20 to-orange-500/20 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20',
-        'border-emerald-400/50 bg-gradient-to-br from-emerald-500/15 to-teal-500/15 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/20',
-        'border-sky-400/40 bg-gradient-to-br from-sky-500/10 to-blue-500/10 shadow-md shadow-sky-500/10 hover:shadow-sky-500/20',
-        'border-purple-400/30 bg-gradient-to-br from-purple-500/10 to-violet-500/10 shadow-sm shadow-purple-500/10 hover:shadow-purple-500/20',
-        'border-rose-400/30 bg-gradient-to-br from-rose-500/10 to-pink-500/10 shadow-sm shadow-rose-500/10 hover:shadow-rose-500/20',
+        'border-2 border-amber-400 bg-gradient-to-br from-amber-500/20 to-orange-500/20 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/20',
+        'border-2 border-emerald-400 bg-gradient-to-br from-emerald-500/15 to-teal-500/15 shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/20',
+        'border-2 border-sky-400 bg-gradient-to-br from-sky-500/10 to-blue-500/10 shadow-md shadow-sky-500/10 hover:shadow-sky-500/20',
+        'border-2 border-purple-400 bg-gradient-to-br from-purple-500/10 to-violet-500/10 shadow-sm shadow-purple-500/10 hover:shadow-purple-500/20',
+        'border-2 border-rose-400 bg-gradient-to-br from-rose-500/10 to-pink-500/10 shadow-sm shadow-rose-500/10 hover:shadow-rose-500/20',
     ];
 
     const nodeColor = depthColors[Math.min(depth, depthColors.length - 1)];
@@ -143,7 +143,7 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
         <div className="flex flex-col items-center">
             {/* Main Node or Side-by-side Pair */}
             {sideBySideSpouses.length > 0 ? (
-                <div className="flex items-center gap-2 rounded-3xl border border-sidebar-border/40 bg-background/50 p-2 backdrop-blur-xs shadow-sm">
+                <div className="flex items-center gap-2 rounded-3xl border-2 border-sidebar-border bg-background/50 p-2 backdrop-blur-xs shadow-sm">
                     {renderPrimaryCard()}
 
                     {sideBySideSpouses.map(spouse => (
@@ -159,10 +159,10 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                             {/* Spouse Card */}
                             <button
                                 onClick={() => onNodeClick?.({ ...member, generation: depth + 1 })}
-                                className={`relative cursor-pointer rounded-2xl border px-5 py-3 text-center transition-all duration-300 hover:scale-105 ${
+                                className={`relative cursor-pointer rounded-2xl border-2 px-5 py-3 text-center transition-all duration-300 hover:scale-105 ${
                                     spouse.gender === 'male'
-                                        ? 'border-sky-400/50 bg-gradient-to-br from-sky-500/15 to-blue-500/15 shadow-md shadow-sky-500/10 hover:shadow-sky-500/20'
-                                        : 'border-pink-400/50 bg-gradient-to-br from-pink-500/15 to-rose-500/15 shadow-md shadow-pink-500/10 hover:shadow-pink-500/20'
+                                        ? 'border-sky-400 bg-gradient-to-br from-sky-500/15 to-blue-500/15 shadow-md shadow-sky-500/10 hover:shadow-sky-500/20'
+                                        : 'border-pink-400 bg-gradient-to-br from-pink-500/15 to-rose-500/15 shadow-md shadow-pink-500/10 hover:shadow-pink-500/20'
                                 }`}
                             >
                                 <div
@@ -212,13 +212,13 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
             {hasChildren && childrenGroups.length > 0 && (
                 <div className="flex flex-col items-center mt-2">
                     {/* Vertical connector down from parent */}
-                    <div className="h-6 w-px bg-gradient-to-b from-muted-foreground/30 to-muted-foreground/10" />
+                    <div className="h-8 w-[3px] rounded-full bg-gradient-to-b from-slate-400 to-slate-300" />
 
                     {/* If multiple spouse groups, create a horizontal split for the groups */}
                     {childrenGroups.length > 1 && (
                         <div className="relative flex items-center justify-center mb-2">
                             <div
-                                className="absolute top-0 h-px bg-muted-foreground/20"
+                                className="absolute top-0 h-[2.5px] rounded-full bg-slate-400/70"
                                 style={{
                                     width: `calc(100% - ${(100 / childrenGroups.length)}%)`,
                                 }}
@@ -237,14 +237,14 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                                 )}
                                 
                                 {childrenGroups.length > 1 && (
-                                    <div className="h-4 w-px bg-muted-foreground/15 mb-2" />
+                                    <div className="h-4 w-[2.5px] rounded-full bg-slate-400/60 mb-2" />
                                 )}
 
                                 {/* Horizontal bar for the children of THIS group */}
                                 {group.children.length > 1 && (
                                     <div className="relative flex items-center w-full">
                                         <div
-                                            className="h-px bg-muted-foreground/20 absolute top-0"
+                                            className="h-[2.5px] rounded-full bg-slate-400/70 absolute top-0"
                                             style={{
                                                 left: `${50 / group.children.length}%`,
                                                 right: `${50 / group.children.length}%`
@@ -258,7 +258,7 @@ export function TreeNode({ member, depth = 0, onNodeClick }: TreeNodeProps) {
                                     {group.children.map((child) => (
                                         <div key={child.id} className="flex flex-col items-center relative">
                                             {group.children.length > 1 && (
-                                                <div className="h-4 w-px bg-muted-foreground/15 absolute -top-2" />
+                                                <div className="h-4 w-[2.5px] rounded-full bg-slate-400/60 absolute -top-2" />
                                             )}
                                             <TreeNode member={child} depth={depth + 1} onNodeClick={onNodeClick} />
                                         </div>

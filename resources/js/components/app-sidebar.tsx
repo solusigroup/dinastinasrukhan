@@ -1,5 +1,14 @@
 import { Link, usePage } from '@inertiajs/react';
-import { LayoutGrid, Users, TreesIcon, Images, BookOpen, Shield, UserCog } from 'lucide-react';
+import {
+    LayoutGrid,
+    Users,
+    TreesIcon,
+    Images,
+    BookOpen,
+    Shield,
+    UserCog,
+    MessageSquare,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -22,6 +31,11 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
+        title: 'Pesan / Chat',
+        href: '/chat',
+        icon: MessageSquare,
+    },
+    {
         title: 'Galeri Keluarga',
         href: '/gallery',
         icon: Images,
@@ -40,13 +54,13 @@ const mainNavItems: NavItem[] = [
 
 export function AppSidebar() {
     const { auth } = usePage().props as any;
-    
+
     // Check superadmin status from server-side flag
     const isSuperadmin = auth?.user?.is_superadmin === true;
 
     // Build the nav list
     const navItems = [];
-    
+
     // Show admin menu items for superadmin users
     if (isSuperadmin) {
         navItems.push({
@@ -87,13 +101,11 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={navItems} label={isSuperadmin ? "Menu Admin" : "Menu"} />
+                <NavMain
+                    items={navItems}
+                    label={isSuperadmin ? 'Menu Admin' : 'Menu'}
+                />
             </SidebarContent>
-
-
-
-
-
 
             <SidebarFooter>
                 <NavFooter items={footerNavItems} className="mt-auto" />

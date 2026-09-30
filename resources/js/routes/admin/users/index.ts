@@ -428,7 +428,7 @@ updateRole.put = (args: { user: number | { id: number } } | [user: number | { id
     updateRole.form = updateRoleForm
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
  */
 export const assignBranch = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -443,7 +443,7 @@ assignBranch.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
  */
 assignBranch.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -476,7 +476,7 @@ assignBranch.url = (args: { user: number | { id: number } } | [user: number | { 
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
  */
 assignBranch.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -486,7 +486,7 @@ assignBranch.post = (args: { user: number | { id: number } } | [user: number | {
 
     /**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
  */
     const assignBranchForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -496,7 +496,7 @@ assignBranch.post = (args: { user: number | { id: number } } | [user: number | {
 
             /**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
  */
         assignBranchForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -507,7 +507,7 @@ assignBranch.post = (args: { user: number | { id: number } } | [user: number | {
     assignBranch.form = assignBranchForm
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::removeBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:148
+ * @see app/Http/Controllers/Admin/UserManagementController.php:173
  * @route '/admin/users/{user}/remove-branch'
  */
 export const removeBranch = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -522,7 +522,7 @@ removeBranch.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::removeBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:148
+ * @see app/Http/Controllers/Admin/UserManagementController.php:173
  * @route '/admin/users/{user}/remove-branch'
  */
 removeBranch.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -555,7 +555,7 @@ removeBranch.url = (args: { user: number | { id: number } } | [user: number | { 
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::removeBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:148
+ * @see app/Http/Controllers/Admin/UserManagementController.php:173
  * @route '/admin/users/{user}/remove-branch'
  */
 removeBranch.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -565,7 +565,7 @@ removeBranch.delete = (args: { user: number | { id: number } } | [user: number |
 
     /**
 * @see \App\Http\Controllers\Admin\UserManagementController::removeBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:148
+ * @see app/Http/Controllers/Admin/UserManagementController.php:173
  * @route '/admin/users/{user}/remove-branch'
  */
     const removeBranchForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -580,7 +580,7 @@ removeBranch.delete = (args: { user: number | { id: number } } | [user: number |
 
             /**
 * @see \App\Http\Controllers\Admin\UserManagementController::removeBranch
- * @see app/Http/Controllers/Admin/UserManagementController.php:148
+ * @see app/Http/Controllers/Admin/UserManagementController.php:173
  * @route '/admin/users/{user}/remove-branch'
  */
         removeBranchForm.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -596,7 +596,7 @@ removeBranch.delete = (args: { user: number | { id: number } } | [user: number |
     removeBranch.form = removeBranchForm
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::destroy
- * @see app/Http/Controllers/Admin/UserManagementController.php:164
+ * @see app/Http/Controllers/Admin/UserManagementController.php:189
  * @route '/admin/users/{user}'
  */
 export const destroy = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -611,7 +611,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::destroy
- * @see app/Http/Controllers/Admin/UserManagementController.php:164
+ * @see app/Http/Controllers/Admin/UserManagementController.php:189
  * @route '/admin/users/{user}'
  */
 destroy.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -644,7 +644,7 @@ destroy.url = (args: { user: number | { id: number } } | [user: number | { id: n
 
 /**
 * @see \App\Http\Controllers\Admin\UserManagementController::destroy
- * @see app/Http/Controllers/Admin/UserManagementController.php:164
+ * @see app/Http/Controllers/Admin/UserManagementController.php:189
  * @route '/admin/users/{user}'
  */
 destroy.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -654,7 +654,7 @@ destroy.delete = (args: { user: number | { id: number } } | [user: number | { id
 
     /**
 * @see \App\Http\Controllers\Admin\UserManagementController::destroy
- * @see app/Http/Controllers/Admin/UserManagementController.php:164
+ * @see app/Http/Controllers/Admin/UserManagementController.php:189
  * @route '/admin/users/{user}'
  */
     const destroyForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -669,7 +669,7 @@ destroy.delete = (args: { user: number | { id: number } } | [user: number | { id
 
             /**
 * @see \App\Http\Controllers\Admin\UserManagementController::destroy
- * @see app/Http/Controllers/Admin/UserManagementController.php:164
+ * @see app/Http/Controllers/Admin/UserManagementController.php:189
  * @route '/admin/users/{user}'
  */
         destroyForm.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

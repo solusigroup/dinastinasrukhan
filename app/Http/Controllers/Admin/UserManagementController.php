@@ -114,6 +114,31 @@ class UserManagementController extends Controller
     }
 
     /**
+     * Reset password for a non-superadmin user.
+     */
+    public function resetPassword(Request $request, User $user): RedirectResponse
+    {
+        // Prevent resetting superadmin password via this method
+        if ($user->isSuperadmin()) {
+            return back()->with('error', 'Password akun Superadmin tidak dapat direset melalui menu ini.');
+        }
+
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'password.required' => 'Password baru wajib diisi.',
+            'password.min' => 'Password minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        ]);
+
+        $user->update([
+            'password' => $request->password,
+        ]);
+
+        return back()->with('success', "Password untuk user \"{$user->name}\" berhasil direset.");
+    }
+
+    /**
      * Assign a branch to a user.
      */
     public function assignBranch(Request $request, User $user): RedirectResponse

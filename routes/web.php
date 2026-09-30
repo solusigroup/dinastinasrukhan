@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified', 'approved', 'superadmin', 'throttle:60,1'
         Route::post('users/{user}/approve', [UserManagementController::class, 'approve'])->name('users.approve');
         Route::post('users/{user}/reject', [UserManagementController::class, 'reject'])->name('users.reject');
         Route::put('users/{user}/role', [UserManagementController::class, 'updateRole'])->name('users.update-role');
+        Route::put('users/{user}/reset-password', [UserManagementController::class, 'resetPassword'])->name('users.reset-password');
         Route::post('users/{user}/assign-branch', [UserManagementController::class, 'assignBranch'])->name('users.assign-branch');
         Route::delete('users/{user}/remove-branch', [UserManagementController::class, 'removeBranch'])->name('users.remove-branch');
         Route::delete('users/{user}', [UserManagementController::class, 'destroy'])->name('users.destroy');

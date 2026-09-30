@@ -427,6 +427,95 @@ updateRole.put = (args: { user: number | { id: number } } | [user: number | { id
     
     updateRole.form = updateRoleForm
 /**
+* @see \App\Http\Controllers\Admin\UserManagementController::resetPassword
+ * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @route '/admin/users/{user}/reset-password'
+ */
+export const resetPassword = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: resetPassword.url(args, options),
+    method: 'put',
+})
+
+resetPassword.definition = {
+    methods: ["put"],
+    url: '/admin/users/{user}/reset-password',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\Admin\UserManagementController::resetPassword
+ * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @route '/admin/users/{user}/reset-password'
+ */
+resetPassword.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { user: args }
+    }
+
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { user: args.id }
+        }
+    
+    if (Array.isArray(args)) {
+        args = {
+                    user: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        user: typeof args.user === 'object'
+                ? args.user.id
+                : args.user,
+                }
+
+    return resetPassword.definition.url
+            .replace('{user}', parsedArgs.user.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Admin\UserManagementController::resetPassword
+ * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @route '/admin/users/{user}/reset-password'
+ */
+resetPassword.put = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: resetPassword.url(args, options),
+    method: 'put',
+})
+
+    /**
+* @see \App\Http\Controllers\Admin\UserManagementController::resetPassword
+ * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @route '/admin/users/{user}/reset-password'
+ */
+    const resetPasswordForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: resetPassword.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\Admin\UserManagementController::resetPassword
+ * @see app/Http/Controllers/Admin/UserManagementController.php:119
+ * @route '/admin/users/{user}/reset-password'
+ */
+        resetPasswordForm.put = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: resetPassword.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    resetPassword.form = resetPasswordForm
+/**
 * @see \App\Http\Controllers\Admin\UserManagementController::assignBranch
  * @see app/Http/Controllers/Admin/UserManagementController.php:144
  * @route '/admin/users/{user}/assign-branch'
@@ -689,6 +778,7 @@ show: Object.assign(show, show),
 approve: Object.assign(approve, approve),
 reject: Object.assign(reject, reject),
 updateRole: Object.assign(updateRole, updateRole),
+resetPassword: Object.assign(resetPassword, resetPassword),
 assignBranch: Object.assign(assignBranch, assignBranch),
 removeBranch: Object.assign(removeBranch, removeBranch),
 destroy: Object.assign(destroy, destroy),

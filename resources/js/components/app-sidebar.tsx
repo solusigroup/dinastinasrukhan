@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import {
     LayoutGrid,
@@ -8,11 +9,13 @@ import {
     Shield,
     UserCog,
     MessageSquare,
+    Download,
 } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
+import { PwaInstallDialog } from '@/components/pwa-install-dialog';
 import {
     Sidebar,
     SidebarContent,
@@ -54,9 +57,12 @@ const mainNavItems: NavItem[] = [
 
 export function AppSidebar() {
     const { auth } = usePage().props as any;
+    const [installDialogOpen, setInstallDialogOpen] = useState(false);
 
     // Check superadmin status from server-side flag
     const isSuperadmin = auth?.user?.is_superadmin === true;
+    const isViewer = auth?.user?.role === 'viewer';
+    const canChat = auth?.user?.can_chat ?? (!isViewer && auth?.user?.role !== 'pending');
 
     // Build the nav list
     const navItems = [];
@@ -75,8 +81,16 @@ export function AppSidebar() {
         });
     }
 
+    // Filter main nav items (hide chat for viewers)
+    const filteredMainNavItems = mainNavItems.filter((item) => {
+        if (item.href === '/chat' && !canChat) {
+            return false;
+        }
+        return true;
+    });
+
     // Then main nav
-    navItems.push(...mainNavItems);
+    navItems.push(...filteredMainNavItems);
 
     const footerNavItems: NavItem[] = [
         {
@@ -108,8 +122,23 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton
+                            onClick={() => setInstallDialogOpen(true)}
+                            className="text-amber-500 hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer"
+                        >
+                            <Download className="h-4 w-4" />
+                            <span>Instal Aplikasi (PWA)</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
                 <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
+                <PwaInstallDialog
+                    open={installDialogOpen}
+                    onOpenChange={setInstallDialogOpen}
+                />
             </SidebarFooter>
         </Sidebar>
     );

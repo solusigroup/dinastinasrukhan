@@ -19,8 +19,9 @@ class ChatController extends Controller
     {
         $currentUserId = auth()->id();
 
-        // Get all active users except the current user
+        // Get all active users eligible for chat (non-viewers) except the current user
         $users = User::where('status', User::STATUS_ACTIVE)
+            ->where('role', '!=', User::ROLE_VIEWER)
             ->where('id', '!=', $currentUserId)
             ->get();
 
@@ -134,6 +135,12 @@ class ChatController extends Controller
     {
         $currentUserId = auth()->id();
 
+        if ($user->isViewer()) {
+            return response()->json([
+                'messages' => [],
+            ]);
+        }
+
         // Mark incoming messages as read
         ChatMessage::where('sender_id', $user->id)
             ->where('recipient_id', $currentUserId)
@@ -178,6 +185,16 @@ class ChatController extends Controller
 
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Anda tidak dapat mengirim pesan ke diri sendiri.');
+        }
+
+        if ($user->isViewer()) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Pengguna dengan peran Viewer tidak dapat menggunakan fitur chat.',
+                ], 403);
+            }
+            return back()->with('error', 'Pengguna dengan peran Viewer tidak dapat menggunakan fitur chat.');
         }
 
         if ($user->status !== User::STATUS_ACTIVE) {
@@ -229,6 +246,7 @@ class ChatController extends Controller
         ]);
 
         $recipients = User::where('status', User::STATUS_ACTIVE)
+            ->where('role', '!=', User::ROLE_VIEWER)
             ->where('id', '!=', $currentUser->id)
             ->get();
 

@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'role' => (string) $user->role,
                 'status' => (string) $user->status,
                 'is_superadmin' => $user->isSuperadmin(),
+                'can_chat' => $user->canChat(),
             ];
         }
 

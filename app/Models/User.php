@@ -84,6 +84,11 @@ class User extends Authenticatable
         return $this->status === self::STATUS_REJECTED;
     }
 
+    public function canChat(): bool
+    {
+        return $this->isActive() && !$this->isViewer() && !$this->isPendingRole();
+    }
+
     // ── Relationships ────────────────────────────────────────
 
     /**

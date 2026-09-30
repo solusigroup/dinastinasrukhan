@@ -32,9 +32,28 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+        {{-- PWA Meta Tags & Manifest --}}
+        <link rel="manifest" href="/manifest.webmanifest">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="{{ config('app.name', 'Dinasti Nasrukhan') }}">
+        <meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+
+        {{-- iOS Safari PWA Meta Tags & Icons --}}
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="{{ config('app.name', 'Dinasti Nasrukhan') }}">
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
+
+        {{-- Windows & Android Icons --}}
+        <meta name="msapplication-TileColor" content="#09090b">
+        <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />

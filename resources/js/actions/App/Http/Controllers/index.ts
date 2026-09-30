@@ -1,17 +1,19 @@
 import FamilyTreeController from './FamilyTreeController'
 import PendingApprovalController from './PendingApprovalController'
 import DashboardController from './DashboardController'
-import ActivityLogController from './ActivityLogController'
 import FamilyMemberController from './FamilyMemberController'
+import ChatController from './ChatController'
 import Admin from './Admin'
+import ActivityLogController from './ActivityLogController'
 import Settings from './Settings'
 const Controllers = {
     FamilyTreeController: Object.assign(FamilyTreeController, FamilyTreeController),
 PendingApprovalController: Object.assign(PendingApprovalController, PendingApprovalController),
 DashboardController: Object.assign(DashboardController, DashboardController),
-ActivityLogController: Object.assign(ActivityLogController, ActivityLogController),
 FamilyMemberController: Object.assign(FamilyMemberController, FamilyMemberController),
+ChatController: Object.assign(ChatController, ChatController),
 Admin: Object.assign(Admin, Admin),
+ActivityLogController: Object.assign(ActivityLogController, ActivityLogController),
 Settings: Object.assign(Settings, Settings),
 }
 

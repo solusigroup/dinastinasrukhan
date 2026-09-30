@@ -25,11 +25,13 @@ Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::resource('family-members', FamilyMemberController::class);
     Route::get('family-tree', [FamilyMemberController::class, 'tree'])->name('family-tree');
 
-    // Chat routes
-    Route::get('chat', [ChatController::class, 'index'])->name('chat.index');
-    Route::get('chat/{user}/messages', [ChatController::class, 'getMessages'])->name('chat.messages');
-    Route::post('chat/bulk-broadcast', [ChatController::class, 'bulkBroadcast'])->name('chat.bulk-broadcast');
-    Route::post('chat/{user}', [ChatController::class, 'store'])->name('chat.store');
+    // Chat routes (accessible only by non-viewer roles)
+    Route::middleware(['can_chat'])->group(function () {
+        Route::get('chat', [ChatController::class, 'index'])->name('chat.index');
+        Route::get('chat/{user}/messages', [ChatController::class, 'getMessages'])->name('chat.messages');
+        Route::post('chat/bulk-broadcast', [ChatController::class, 'bulkBroadcast'])->name('chat.bulk-broadcast');
+        Route::post('chat/{user}', [ChatController::class, 'store'])->name('chat.store');
+    });
 });
 
 // Admin routes (superadmin only)

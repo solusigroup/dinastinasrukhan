@@ -14,6 +14,8 @@ export type User = {
     approved_by: number | null;
     created_at: string;
     updated_at: string;
+    is_superadmin?: boolean;
+    can_chat?: boolean;
     branch_assignments_count?: number;
     [key: string]: unknown;
 };

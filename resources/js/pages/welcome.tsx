@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
-import { TreesIcon, Users, Layers, LogIn, UserPlus, ChevronRight, BookOpen, ShieldCheck, Image, Network, Heart, Sparkles } from 'lucide-react';
+import { TreesIcon, Users, Layers, LogIn, UserPlus, ChevronRight, BookOpen, ShieldCheck, Image, Network, Heart, Sparkles, Download } from 'lucide-react';
+import { PwaInstallBanner } from '@/components/pwa-install-banner';
+import { PwaInstallDialog } from '@/components/pwa-install-dialog';
 import type { FamilyTreeStats } from '@/types';
 
 type WelcomeProps = {
@@ -39,6 +42,7 @@ function FeatureCard({ icon: Icon, title, description, badgeColor }: { icon: Rea
 export default function Welcome() {
     const { stats } = usePage<{ stats: FamilyTreeStats }>().props;
     const { auth } = usePage<{ auth?: { user?: { id: number } } }>().props;
+    const [installDialogOpen, setInstallDialogOpen] = useState(false);
     const isLoggedIn = !!auth?.user;
 
     return (
@@ -66,6 +70,14 @@ export default function Welcome() {
                             </div>
                         </div>
                         <div className="flex items-center gap-3">
+                            <button
+                                type="button"
+                                onClick={() => setInstallDialogOpen(true)}
+                                className="flex items-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-2.5 text-sm font-medium text-amber-300 transition-all hover:border-amber-500/50 hover:bg-amber-500/20 cursor-pointer"
+                            >
+                                <Download className="h-4 w-4 text-amber-400" />
+                                <span className="hidden sm:inline">Instal Aplikasi</span>
+                            </button>
                             <a
                                 href="/panduan.html"
                                 target="_blank"
@@ -248,6 +260,9 @@ export default function Welcome() {
                     </div>
                 </footer>
             </div>
+
+            <PwaInstallBanner />
+            <PwaInstallDialog open={installDialogOpen} onOpenChange={setInstallDialogOpen} />
         </>
     );
 }

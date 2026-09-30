@@ -25,6 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'approved' => \App\Http\Middleware\EnsureUserApproved::class,
             'superadmin' => \App\Http\Middleware\EnsureSuperadmin::class,
+            'can_chat' => \App\Http\Middleware\EnsureCanChat::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

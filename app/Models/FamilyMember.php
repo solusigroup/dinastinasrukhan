@@ -75,6 +75,23 @@ class FamilyMember extends Model
     }
 
     /**
+     * Mosaics where this member is the primary linked tree member.
+     */
+    public function mosaics(): HasMany
+    {
+        return $this->hasMany(FamilyMosaic::class);
+    }
+
+    /**
+     * Mosaics where this member is tagged.
+     */
+    public function taggedMosaics(): BelongsToMany
+    {
+        return $this->belongsToMany(FamilyMosaic::class, 'family_mosaic_members')
+            ->withTimestamps();
+    }
+
+    /**
      * Scope to get root members (no parent).
      */
     public function scopeRoots($query)

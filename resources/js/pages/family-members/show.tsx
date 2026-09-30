@@ -1,10 +1,23 @@
+import { useState } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
-import { ArrowLeft, Calendar, MapPin, Heart, Users, Pencil } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Heart, Users, Pencil, Grid, Maximize2, Plus } from 'lucide-react';
 import AppLayout from '@/layouts/app-layout';
-import type { BreadcrumbItem, FamilyMember } from '@/types';
+import { MosaicEnlargeModal } from '@/components/mosaic-enlarge-modal';
+import type { BreadcrumbItem, FamilyMember, FamilyMosaic } from '@/types';
 
 export default function FamilyMemberShow() {
-    const { member } = usePage<{ member: FamilyMember }>().props;
+    const { member, canManage } = usePage<{ member: FamilyMember; canManage?: boolean }>().props;
+    const [enlargeIndex, setEnlargeIndex] = useState<number | null>(null);
+
+    // Merge mosaics where member is primary or tagged
+    const allMosaicsMap = new Map<number, FamilyMosaic>();
+    (member.mosaics || []).forEach((m) => allMosaicsMap.set(m.id, { ...m, family_member: member }));
+    (member.tagged_mosaics || []).forEach((m) => {
+        if (!allMosaicsMap.has(m.id)) {
+            allMosaicsMap.set(m.id, m);
+        }
+    });
+    const allMosaics = Array.from(allMosaicsMap.values());
 
     const breadcrumbs: BreadcrumbItem[] = [
         { title: 'Dashboard', href: '/dashboard' },
@@ -194,9 +207,82 @@ export default function FamilyMemberShow() {
                                 </div>
                             </div>
                         )}
+
+                        {/* Mozaik Kenangan & Kegiatan */}
+                        <div className="mt-8 border-t border-sidebar-border/60 pt-6">
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                                    <Grid className="h-4 w-4 text-amber-500" />
+                                    Mozaik Kenangan & Kegiatan ({allMosaics.length})
+                                </h3>
+                                <div className="flex items-center gap-2">
+                                    <Link
+                                        href={`/mosaic?member_id=${member.id}`}
+                                        className="text-xs font-medium text-amber-500 hover:text-amber-600 transition-colors"
+                                    >
+                                        Buka di Galeri Mozaik &rarr;
+                                    </Link>
+                                </div>
+                            </div>
+
+                            {allMosaics.length === 0 ? (
+                                <div className="rounded-xl border border-dashed border-sidebar-border/80 bg-muted/10 p-6 text-center">
+                                    <p className="text-xs text-muted-foreground">
+                                        Belum ada foto kegiatan atau kenangan mozaik yang dikaitkan dengan {member.name}.
+                                    </p>
+                                    {canManage && (
+                                        <Link
+                                            href="/mosaic"
+                                            className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-500 hover:bg-amber-500/20 transition-colors"
+                                        >
+                                            <Plus className="h-3.5 w-3.5" />
+                                            <span>Unggah Foto Mozaik</span>
+                                        </Link>
+                                    )}
+                                </div>
+                            ) : (
+                                <div className="flex flex-wrap gap-3">
+                                    {allMosaics.map((mosaic, index) => (
+                                        <div
+                                            key={mosaic.id}
+                                            onClick={() => setEnlargeIndex(index)}
+                                            className="group flex flex-col items-center cursor-pointer transition-transform duration-200 hover:-translate-y-1"
+                                            style={{ width: '3cm' }}
+                                        >
+                                            <div
+                                                className="relative overflow-hidden rounded-xl border border-sidebar-border/70 bg-muted/40 shadow-xs transition-all duration-300 group-hover:border-amber-500/60 group-hover:shadow-md group-hover:shadow-amber-500/10"
+                                                style={{ width: '3cm', height: '3cm' }}
+                                            >
+                                                <img
+                                                    src={`/storage/${mosaic.thumbnail_path || mosaic.photo_path}`}
+                                                    alt={mosaic.title || mosaic.caption}
+                                                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                    loading="lazy"
+                                                />
+                                                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                                    <Maximize2 className="h-4 w-4 text-white" />
+                                                </div>
+                                            </div>
+                                            <p className="mt-1 line-clamp-2 text-center text-[10px] text-muted-foreground leading-snug">
+                                                {mosaic.title || mosaic.caption}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
+
+            {/* Enlarge Modal */}
+            <MosaicEnlargeModal
+                isOpen={enlargeIndex !== null}
+                onClose={() => setEnlargeIndex(null)}
+                mosaics={allMosaics}
+                currentIndex={enlargeIndex ?? 0}
+                onNavigate={(idx) => setEnlargeIndex(idx)}
+            />
         </AppLayout>
     );
 }

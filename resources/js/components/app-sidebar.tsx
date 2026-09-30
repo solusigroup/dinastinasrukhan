@@ -5,6 +5,7 @@ import {
     Users,
     TreesIcon,
     Images,
+    Grid,
     BookOpen,
     Shield,
     UserCog,
@@ -37,6 +38,11 @@ const mainNavItems: NavItem[] = [
         title: 'Pesan / Chat',
         href: '/chat',
         icon: MessageSquare,
+    },
+    {
+        title: 'Mozaik Kegiatan',
+        href: '/mosaic',
+        icon: Grid,
     },
     {
         title: 'Galeri Keluarga',

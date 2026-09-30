@@ -446,7 +446,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     dashboard.form = dashboardForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 export const gallery = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -461,7 +461,7 @@ gallery.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.url = (options?: RouteQueryOptions) => {
@@ -470,7 +470,7 @@ gallery.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -479,7 +479,7 @@ gallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -489,7 +489,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
     const galleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -499,7 +499,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
         galleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -508,7 +508,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
         galleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -524,7 +524,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     gallery.form = galleryForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 export const familyTree = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -539,7 +539,7 @@ familyTree.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 familyTree.url = (options?: RouteQueryOptions) => {
@@ -548,7 +548,7 @@ familyTree.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 familyTree.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -557,7 +557,7 @@ familyTree.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 familyTree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -567,7 +567,7 @@ familyTree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
     const familyTreeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -577,7 +577,7 @@ familyTree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
         familyTreeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -586,7 +586,7 @@ familyTree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::familyTree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
         familyTreeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

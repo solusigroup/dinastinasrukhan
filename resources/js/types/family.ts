@@ -32,6 +32,8 @@ export type FamilyMember = {
     spouses?: Spouse[];
     children?: FamilyMember[];
     children_recursive?: FamilyMember[];
+    mosaics?: FamilyMosaic[];
+    tagged_mosaics?: FamilyMosaic[];
 };
 
 export type FamilyTreeStats = {
@@ -41,3 +43,24 @@ export type FamilyTreeStats = {
     totalFemale?: number;
     totalSpouses?: number;
 };
+
+export interface FamilyMosaic {
+    id: number;
+    user_id: number;
+    family_member_id: number;
+    title: string | null;
+    caption: string;
+    photo_path: string;
+    thumbnail_path: string;
+    activity_date: string | null;
+    created_at: string;
+    updated_at: string;
+    user?: {
+        id: number;
+        name: string;
+        role: string;
+    };
+    family_member?: FamilyMember;
+    tagged_members?: FamilyMember[];
+    can_manage?: boolean;
+}

@@ -111,10 +111,21 @@ class FamilyMemberController extends Controller
      */
     public function show(FamilyMember $familyMember): Response
     {
-        $familyMember->load(['parent', 'children', 'spouses', 'parentSpouse']);
+        $familyMember->load([
+            'parent',
+            'children',
+            'spouses',
+            'parentSpouse',
+            'mosaics.user:id,name,role',
+            'taggedMosaics.user:id,name,role',
+        ]);
+
+        $user = auth()->user();
+        $canManage = $user ? $user->canManageMember($familyMember) : false;
 
         return Inertia::render('family-members/show', [
             'member' => $familyMember,
+            'canManage' => $canManage,
         ]);
     }
 

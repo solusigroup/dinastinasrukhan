@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FamilyMemberController;
+use App\Http\Controllers\FamilyMosaicController;
 use App\Http\Controllers\FamilyTreeController;
 use App\Http\Controllers\PendingApprovalController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'approved'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('gallery', [FamilyMemberController::class, 'gallery'])->name('gallery');
+    Route::get('mosaic', [FamilyMosaicController::class, 'index'])->name('mosaic.index');
+    Route::post('mosaic', [FamilyMosaicController::class, 'store'])->name('mosaic.store');
+    Route::put('mosaic/{mosaic}', [FamilyMosaicController::class, 'update'])->name('mosaic.update');
+    Route::delete('mosaic/{mosaic}', [FamilyMosaicController::class, 'destroy'])->name('mosaic.destroy');
     Route::resource('family-members', FamilyMemberController::class);
     Route::get('family-tree', [FamilyMemberController::class, 'tree'])->name('family-tree');
 

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 export const gallery = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ gallery.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ gallery.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ gallery.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
 gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
     const galleryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
         galleryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ gallery.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::gallery
- * @see app/Http/Controllers/FamilyMemberController.php:273
+ * @see app/Http/Controllers/FamilyMemberController.php:284
  * @route '/gallery'
  */
         galleryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -387,7 +387,7 @@ show.head = (args: { family_member: string | number } | [family_member: string |
     show.form = showForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
 export const edit = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -402,7 +402,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
 edit.url = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -430,7 +430,7 @@ edit.url = (args: { family_member: string | number } | [family_member: string | 
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
 edit.get = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -439,7 +439,7 @@ edit.get = (args: { family_member: string | number } | [family_member: string | 
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
 edit.head = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -449,7 +449,7 @@ edit.head = (args: { family_member: string | number } | [family_member: string |
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
     const editForm = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -459,7 +459,7 @@ edit.head = (args: { family_member: string | number } | [family_member: string |
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
         editForm.get = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -468,7 +468,7 @@ edit.head = (args: { family_member: string | number } | [family_member: string |
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::edit
- * @see app/Http/Controllers/FamilyMemberController.php:124
+ * @see app/Http/Controllers/FamilyMemberController.php:135
  * @route '/family-members/{family_member}/edit'
  */
         editForm.head = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -484,7 +484,7 @@ edit.head = (args: { family_member: string | number } | [family_member: string |
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
 export const update = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -499,7 +499,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
 update.url = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -527,7 +527,7 @@ update.url = (args: { family_member: string | number } | [family_member: string 
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
 update.put = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -536,7 +536,7 @@ update.put = (args: { family_member: string | number } | [family_member: string 
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
 update.patch = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -546,7 +546,7 @@ update.patch = (args: { family_member: string | number } | [family_member: strin
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
     const updateForm = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -561,7 +561,7 @@ update.patch = (args: { family_member: string | number } | [family_member: strin
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
         updateForm.put = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -575,7 +575,7 @@ update.patch = (args: { family_member: string | number } | [family_member: strin
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::update
- * @see app/Http/Controllers/FamilyMemberController.php:154
+ * @see app/Http/Controllers/FamilyMemberController.php:165
  * @route '/family-members/{family_member}'
  */
         updateForm.patch = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -591,7 +591,7 @@ update.patch = (args: { family_member: string | number } | [family_member: strin
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:232
+ * @see app/Http/Controllers/FamilyMemberController.php:243
  * @route '/family-members/{family_member}'
  */
 export const destroy = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -606,7 +606,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:232
+ * @see app/Http/Controllers/FamilyMemberController.php:243
  * @route '/family-members/{family_member}'
  */
 destroy.url = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -634,7 +634,7 @@ destroy.url = (args: { family_member: string | number } | [family_member: string
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:232
+ * @see app/Http/Controllers/FamilyMemberController.php:243
  * @route '/family-members/{family_member}'
  */
 destroy.delete = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -644,7 +644,7 @@ destroy.delete = (args: { family_member: string | number } | [family_member: str
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:232
+ * @see app/Http/Controllers/FamilyMemberController.php:243
  * @route '/family-members/{family_member}'
  */
     const destroyForm = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -659,7 +659,7 @@ destroy.delete = (args: { family_member: string | number } | [family_member: str
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::destroy
- * @see app/Http/Controllers/FamilyMemberController.php:232
+ * @see app/Http/Controllers/FamilyMemberController.php:243
  * @route '/family-members/{family_member}'
  */
         destroyForm.delete = (args: { family_member: string | number } | [family_member: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -675,7 +675,7 @@ destroy.delete = (args: { family_member: string | number } | [family_member: str
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 export const tree = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -690,7 +690,7 @@ tree.definition = {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 tree.url = (options?: RouteQueryOptions) => {
@@ -699,7 +699,7 @@ tree.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 tree.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -708,7 +708,7 @@ tree.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
 tree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -718,7 +718,7 @@ tree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
     const treeForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -728,7 +728,7 @@ tree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
         treeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -737,7 +737,7 @@ tree.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\FamilyMemberController::tree
- * @see app/Http/Controllers/FamilyMemberController.php:261
+ * @see app/Http/Controllers/FamilyMemberController.php:272
  * @route '/family-tree'
  */
         treeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
